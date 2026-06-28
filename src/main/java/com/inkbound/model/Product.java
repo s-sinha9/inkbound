@@ -1,14 +1,25 @@
 package com.inkbound.model;
 
+import com.inkbound.repository.ProductRepository;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@Entity
 public class Product{
+    @Id
     private UUID id;
     private String name;
     private BigDecimal price;
+    @Enumerated(EnumType.STRING)
     private Category category;
     private int stock;
+
+    public Product(){}
 
     public Product(UUID id){
         this.id=id;
