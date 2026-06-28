@@ -1,5 +1,8 @@
 package com.inkbound.service;
 
+import com.inkbound.dto.CreateProductRequest;
+import com.inkbound.dto.ProductResponse;
+import com.inkbound.exception.ProductNotFoundException;
 import com.inkbound.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,17 +19,27 @@ public class ProductService {
     private static final Logger log = LoggerFactory.getLogger(ProductService.class);
     private final Map<UUID, Product> products = new ConcurrentHashMap<>();
 
-    public Product createProduct(Product product){
-        product.setId(UUID.randomUUID());
-        products.put(product.getId(),product);
+    public ProductResponse createProduct(CreateProductRequest request){
+        log.info("ProductService.createProduct"+request.toString());
+        Product product=new Product(UUID.randomUUID());
+        product.setName(request.getName());
+        product.setCategory(request.getCategory());
+        product.setPrice(request.getPrice());
+        product.setStock(request.getStock());
+        ProductResponse response = new ProductResponse(product);
         log.info("Created product with id:"+product.getId());
-        return product;
+        return response;
     }
     public List<Product> getAllProducts(){
+        log.info("ProductService.getAllProducts");
         return new ArrayList<>(products.values());
     }
 
-    public Product getProductById(UUID id){
-        return products.get(id);
+    public ProductResponse getProductById(UUID id){
+        log.info("ProductService.getProductById: "+id);
+        Product product = products.get(id);
+        if(product==null)
+            throw new ProductNotFoundException(id);
+        return new ProductResponse(product);
     }
 }

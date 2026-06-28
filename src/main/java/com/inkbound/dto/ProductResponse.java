@@ -1,19 +1,24 @@
-package com.inkbound.model;
+package com.inkbound.dto;
+
+import com.inkbound.model.Category;
+import com.inkbound.model.Product;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class Product{
+public class ProductResponse {
     private UUID id;
     private String name;
     private BigDecimal price;
     private Category category;
     private int stock;
-
-    public Product(UUID id){
-        this.id=id;
+    public ProductResponse(Product product){
+        this.id=product.getId();
+        this.name=product.getName();
+        this.category=product.getCategory();
+        this.stock=product.getStock();
+        this.price=product.getPrice();
     }
-
     public UUID getId() { return id; }
 
     public BigDecimal getPrice() { return price; }
@@ -43,4 +48,6 @@ public class Product{
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+
 }
