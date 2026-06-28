@@ -1,0 +1,38 @@
+2026-06-28T20:00:28.806+05:30  INFO 24028 --- [inkbound] [main] com.inkbound.InkboundApplication         : Starting InkboundApplication using Java 21.0.10 with PID 24028 (D:\Shubham\inkbound\inkbound\build\classes\java\main started by Shubham in D:\Shubham\inkbound\inkbound)
+2026-06-28T20:00:28.810+05:30  INFO 24028 --- [inkbound] [main] com.inkbound.InkboundApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-06-28T20:00:29.630+05:30  INFO 24028 --- [inkbound] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-28T20:00:29.667+05:30  INFO 24028 --- [inkbound] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 JPA repository interfaces.
+2026-06-28T20:00:30.326+05:30  INFO 24028 --- [inkbound] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-28T20:00:30.349+05:30  INFO 24028 --- [inkbound] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-28T20:00:30.350+05:30  INFO 24028 --- [inkbound] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-06-28T20:00:30.449+05:30  INFO 24028 --- [inkbound] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1570 ms
+2026-06-28T20:00:30.702+05:30  INFO 24028 --- [inkbound] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-28T20:00:31.208+05:30  INFO 24028 --- [inkbound] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:d360839b-a8bc-49a2-b8de-66258cc8aade user=SA
+2026-06-28T20:00:31.210+05:30  INFO 24028 --- [inkbound] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-28T20:00:31.274+05:30  INFO 24028 --- [inkbound] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-28T20:00:31.472+05:30  INFO 24028 --- [inkbound] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-06-28T20:00:32.095+05:30  INFO 24028 --- [inkbound] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-28T20:00:32.224+05:30  INFO 24028 --- [inkbound] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:d360839b-a8bc-49a2-b8de-66258cc8aade]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: D360839B-A8BC-49A2-B8DE-66258CC8AADE/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-28T20:00:32.706+05:30  INFO 24028 --- [inkbound] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-28T20:00:32.714+05:30  INFO 24028 --- [inkbound] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-28T20:00:32.802+05:30  WARN 24028 --- [inkbound] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-28T20:00:33.362+05:30  INFO 24028 --- [inkbound] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-28T20:00:33.368+05:30  INFO 24028 --- [inkbound] [main] com.inkbound.InkboundApplication         : Started InkboundApplication in 5.123 seconds (process running for 5.77)
+2026-06-28T20:02:42.153+05:30  INFO 24028 --- [inkbound] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-28T20:02:42.155+05:30  INFO 24028 --- [inkbound] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-28T20:02:42.158+05:30  INFO 24028 --- [inkbound] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-06-28T20:02:42.359+05:30  INFO 24028 --- [inkbound] [http-nio-8080-exec-1] com.inkbound.service.ProductService      : Created product with id:acc714d9-c977-4eab-a43f-6f027c04353d
+2026-06-28T20:04:08.942+05:30  INFO 24028 --- [inkbound] [http-nio-8080-exec-5] com.inkbound.service.ProductService      : Created product with id:fb8ae361-5911-42db-92ca-d814aee25324
+2026-06-28T20:04:28.544+05:30  INFO 24028 --- [inkbound] [http-nio-8080-exec-7] com.inkbound.service.ProductService      : Created product with id:3062ad1e-3ae5-49bd-bb42-5a8f62d9c0cb
+2026-06-28T20:05:07.732+05:30  INFO 24028 --- [inkbound] [http-nio-8080-exec-6] com.inkbound.service.ProductService      : Created product with id:6f72c6d2-af1f-4336-a4ea-27822d4622f4
