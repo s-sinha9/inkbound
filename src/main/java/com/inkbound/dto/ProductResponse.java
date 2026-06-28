@@ -12,13 +12,7 @@ public class ProductResponse {
     private BigDecimal price;
     private Category category;
     private int stock;
-    public ProductResponse(Product product){
-        this.id=product.getId();
-        this.name=product.getName();
-        this.category=product.getCategory();
-        this.stock=product.getStock();
-        this.price=product.getPrice();
-    }
+
     public UUID getId() { return id; }
 
     public BigDecimal getPrice() { return price; }
