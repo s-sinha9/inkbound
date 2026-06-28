@@ -1,31 +1,25 @@
-package com.inkbound.model;
+package com.inkbound.dto;
 
-import com.inkbound.repository.ProductRepository;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import com.inkbound.model.Category;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Entity
-public class Product{
-    @Id
-    private UUID id;
+public class CreateProductRequest {
+    @NotBlank
     private String name;
+    @NotNull
+    @Positive
     private BigDecimal price;
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private Category category;
+    @PositiveOrZero
     private int stock;
 
-    public Product(){}
-
-    public Product(UUID id){
-        this.id=id;
-    }
-
-    public UUID getId() { return id; }
 
     public BigDecimal getPrice() { return price; }
 
@@ -34,10 +28,6 @@ public class Product{
     public int getStock() { return stock; }
 
     public String getName() { return name; }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public void setCategory(Category category) {
         this.category = category;

@@ -1,29 +1,17 @@
-package com.inkbound.model;
+package com.inkbound.dto;
 
-import com.inkbound.repository.ProductRepository;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import com.inkbound.model.Category;
+import com.inkbound.model.Product;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Entity
-public class Product{
-    @Id
+public class ProductResponse {
     private UUID id;
     private String name;
     private BigDecimal price;
-    @Enumerated(EnumType.STRING)
     private Category category;
     private int stock;
-
-    public Product(){}
-
-    public Product(UUID id){
-        this.id=id;
-    }
 
     public UUID getId() { return id; }
 
@@ -54,4 +42,6 @@ public class Product{
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+
 }
