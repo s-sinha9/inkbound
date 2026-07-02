@@ -15,14 +15,13 @@ import com.inkbound.repository.CartRepository;
 import com.inkbound.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class CartService {
 
     private static final Logger log = LoggerFactory.getLogger(CartService.class);

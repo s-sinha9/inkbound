@@ -2,13 +2,9 @@ package com.inkbound.controller;
 
 import com.inkbound.dto.AddCartItemRequest;
 import com.inkbound.dto.CartResponse;
-import com.inkbound.dto.CustomerResponse;
 import com.inkbound.service.CartService;
-import jakarta.websocket.server.PathParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,20 +30,20 @@ public class CartController {
     }
 
     @PostMapping("/items")
-    public ResponseEntity<CartResponse> createItem(@PathVariable UUID customerId, @RequestParam AddCartItemRequest item){
+    public ResponseEntity<CartResponse> createItem(@PathVariable UUID customerId, @RequestBody AddCartItemRequest item){
         log.info("CartController.createItem");
         CartResponse response = this.cartService.createItem(customerId, item);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping("/items/{id}")
-    public ResponseEntity<CartResponse> updateItem(@PathVariable UUID customerId, @PathVariable UUID itemId, @RequestParam AddCartItemRequest item){
+    @PutMapping("/items/{itemId}")
+    public ResponseEntity<CartResponse> updateItem(@PathVariable UUID customerId, @PathVariable UUID itemId, @RequestBody AddCartItemRequest item){
         log.info("CartController.updateItem");
         CartResponse response = this.cartService.updateItem(customerId, itemId, item);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 
-    @DeleteMapping("/items/{id}")
+    @DeleteMapping("/items/{itemId}")
     public ResponseEntity<CartResponse> deleteItem(@PathVariable UUID customerId, @PathVariable UUID itemId){
         log.info("CartController.deleteItem");
         CartResponse response = this.cartService.deleteItem(customerId, itemId);
