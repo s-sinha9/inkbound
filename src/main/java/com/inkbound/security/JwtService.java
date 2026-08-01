@@ -11,6 +11,7 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class JwtService {
@@ -69,8 +70,8 @@ public class JwtService {
         return !isTokenExpired(token);
     }
 
-    public Long extractUserId(String token) {
+    public UUID extractUserId(String token) {
         return extractAllClaims(token)
-                .get("userId", Long.class);
+                .get("userId", UUID.class);
     }
 }
