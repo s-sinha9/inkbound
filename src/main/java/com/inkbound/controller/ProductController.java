@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -32,6 +34,9 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ProductResponse> createProduct(@Valid @RequestBody CreateProductRequest product){
         log.info("ProductController.createProduct "+product.toString());
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication);
         ProductResponse response=productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -48,6 +53,12 @@ public class ProductController {
         log.info("ProductController.getProductById: "+id);
         ProductResponse res = productService.getProductById(id);
         return ResponseEntity.ok(res);
+
+    }
+    @GetMapping("/me")
+    public String me(Authentication authentication) {
+
+        return authentication.getName();
 
     }
 

@@ -1,10 +1,7 @@
 package com.inkbound.model;
 
 import com.inkbound.repository.ProductRepository;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -18,6 +15,9 @@ public class Product{
     @Enumerated(EnumType.STRING)
     private Category category;
     private int stock;
+
+    @Version
+    private Long version;
 
     public Product(){}
 

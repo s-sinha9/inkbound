@@ -1,0 +1,26 @@
+[
+    {
+        "category": "PLANNER",
+        "name": "Daily Planner Model 1",
+        "price": 200,
+        "stock": 20
+    },
+    {
+        "category": "NOTEBOOK",
+        "name": "A4 Notebook",
+        "price": 200,
+        "stock": 20
+    },
+    {
+        "category": "PEN",
+        "name": "Uniball Roller",
+        "price": 20,
+        "stock": 20
+    },
+    {
+        "category": "PEN",
+        "name": "Cello PaperSoft",
+        "price": 10,
+        "stock": 100
+    }
+]

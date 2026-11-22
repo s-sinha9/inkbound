@@ -43,9 +43,8 @@ public class CartService {
 
     public CartResponse getCart(UUID customerId){
         log.info("CartService.getCart");
-        Customer customer = customerRepository.findById(customerId).orElseThrow(()->new CustomerNotFoundException(customerId));
-        Cart cart = cartRepository.findByCustomer(customer);
-        
+        Cart cart = getCartByCustomerId(customerId);
+
         // creating response object
         CartResponse response = new CartResponse();
         List<CartItem> items= cart.getItems();
@@ -55,6 +54,11 @@ public class CartService {
         BigDecimal totalPrice = items.stream().map(CartItem::getSubtotal).reduce(BigDecimal.ZERO,BigDecimal::add);
         response.setTotalPrice(totalPrice);
         return response;
+    }
+
+    public Cart getCartByCustomerId(UUID customerId){
+        Customer customer = customerRepository.findById(customerId).orElseThrow(()->new CustomerNotFoundException(customerId));
+        return cartRepository.findByCustomer(customer);
     }
 
     public CartResponse createItem(UUID customerId, AddCartItemRequest item){

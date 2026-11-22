@@ -1,0 +1,25 @@
+package com.inkbound.service;
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class OutboxPublisher {
+
+    private final OutboxService outboxService;
+
+    public OutboxPublisher(
+            OutboxService outboxService) {
+
+        this.outboxService = outboxService;
+
+    }
+
+    @Scheduled(fixedDelay = 5000)
+    public void publishPendingEvents() {
+
+        outboxService.publishPendingEvents();
+
+    }
+
+}

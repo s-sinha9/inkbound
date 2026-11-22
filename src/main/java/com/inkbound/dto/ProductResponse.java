@@ -1,7 +1,6 @@
 package com.inkbound.dto;
 
 import com.inkbound.model.Category;
-import com.inkbound.model.Product;
 
 import java.math.BigDecimal;
 import java.util.UUID;
