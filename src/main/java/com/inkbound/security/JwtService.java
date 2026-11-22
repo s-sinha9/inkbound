@@ -11,6 +11,8 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -22,12 +24,18 @@ public class JwtService {
     @Value("${jwt.expiration}")
     private Duration expiration;
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(CustomerUserDetails userDetails) {
+        Map<String, Object> claims = new HashMap<>();
+
+        claims.put("role", userDetails.getAuthorities()
+                .iterator()
+                .next()
+                .getAuthority());
+
+        claims.put("userId", userDetails.getUserId().toString());
         return Jwts.builder()
                 .subject(userDetails.getUsername())
-                .claim("role", userDetails.getAuthorities().iterator()
-                        .next()
-                        .getAuthority())
+                .claims(claims)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis()+expiration.toMillis()))
                 .signWith(getSigningKey())
@@ -71,7 +79,9 @@ public class JwtService {
     }
 
     public UUID extractUserId(String token) {
-        return extractAllClaims(token)
-                .get("userId", UUID.class);
+        String userId = extractAllClaims(token)
+                .get("userId", String.class);
+
+        return userId != null ? UUID.fromString(userId) : null;
     }
 }

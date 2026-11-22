@@ -2,6 +2,7 @@ package com.inkbound.controller;
 
 import com.inkbound.dto.JwtResponse;
 import com.inkbound.dto.LoginRequest;
+import com.inkbound.security.CustomerUserDetails;
 import com.inkbound.security.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/auth")
@@ -44,7 +47,7 @@ public class AuthController {
                                 request.password()));
 
 
-        String token = jwtService.generateToken((UserDetails) authentication.getPrincipal());
+        String token = jwtService.generateToken((CustomerUserDetails) authentication.getPrincipal());
 
         String username = jwtService.extractUsername(token);
         String role = jwtService.extractRole(token);
